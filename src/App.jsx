@@ -6,8 +6,7 @@ import SignUp from "./pages/Signup"
 import Profile from "./pages/Profile"
 import NavBar from "./components/NavBar"
 import { AuthContextProvider } from "./context/AuthContext"
-import ProtectedRoute from "./components/ProtectedRoute"
-
+import ProtectedRoute from './components/ProtectedRoute'
 function App() {
 
   return (
@@ -20,9 +19,9 @@ function App() {
           <Route path="/signup" element={<SignUp />} ></Route>
           <Route path="/profile"
             element={
-              <ProtectedRoute >
-                <Profile />
-              </ProtectedRoute>
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
             }
           ></Route>
 
