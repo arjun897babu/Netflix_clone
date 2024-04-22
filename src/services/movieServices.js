@@ -6,7 +6,7 @@ const endPoints = {
   popular : `${baseURL}/movie/popular?api_key=${key}`,
   topRated : `${baseURL}/movie/top_rated?api_key=${key}`,
   trending : `${baseURL}/movie/popular?api_key=${key}&language=en-US&page=2`,
-  comedy : `${baseURL}/movie/comedy?api_key=${key}&language=en-US&query=comedy&page=1&include_adult=false`,
+  comedy : `${baseURL}/search/movie?api_key=${key}&language=en-US&query=comedy&page=1&include_adult=true`,
   upcoming : `${baseURL}/movie/upcoming?api_key=${key}`,
 }
 
