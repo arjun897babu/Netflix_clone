@@ -30,8 +30,8 @@ const Login = ()=>{
           <div className="bg-black/40 fixed w-full top-0 h-screen" />
           <div
             className="fixed w-full px-4 py-24 z-20">
-            <div className="max-w-[450px] h-[500px] mx-auto bg-black/60 rounded-lg">
-              <div className="max-w-[320px] mx-auto py-16">
+            <div className="max-w-[450px] h-100 mx-auto bg-black/60 rounded-lg">
+              <div className="max-w-[320px] mx-auto py-10">
                 <h1 className="text-3xl font-Nsans-bold ">log in</h1>
   
                 <form onSubmit = {handleSubmit} className="w-full flex flex-col py-4" >

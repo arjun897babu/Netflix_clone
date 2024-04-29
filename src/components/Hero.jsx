@@ -12,6 +12,8 @@ const Hero = () => {
         setMovie(randomMovie)
       })
   }, []);
+
+
   const trunate = (str, length) => {
     if (!str) return ''
     return str.length > length ? str.slice(0, length) + '....' : str
@@ -30,7 +32,7 @@ const Hero = () => {
         <div className="absolute w-full h-[550px] lg:h-[850px] bg-gradient-to-r from-black">
           <img
             className="w-full h-full object-cover object-top"
-            src={createImageUrl(backdrop_path,'original')}
+            src={createImageUrl(backdrop_path, 'original')}
             alt={title}
           />
         </div>
@@ -42,7 +44,7 @@ const Hero = () => {
           <button className="capitalize border border-gray-300 py-2 px-5 ml-4">watch later</button>
         </div>
         <p className="text-gray-400 text-sm ">{release_date}</p>
-        <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[100%]">{trunate(overview,300)}</p>
+        <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[100%]">{trunate(overview, 300)}</p>
       </div>
     </div>
 

@@ -20,16 +20,16 @@ const Profile = () => {
       })
     }
   }, [user?.email])
-  
+
   const slide = (offSet) => {
     const slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft + offSet
   }
 
-  const handleUnlinkShow = async (movie)=>{
-    const userDoc = doc(db,'users',user.email)
-    await updateDoc(userDoc,{
-      favShows:arrayRemove(movie)
+  const handleUnlinkShow = async (movie) => {
+    const userDoc = doc(db, 'users', user.email)
+    await updateDoc(userDoc, {
+      favShows: arrayRemove(movie)
     })
   }
 
@@ -50,9 +50,9 @@ const Profile = () => {
         </p>
         <p>
           <AiOutlineClose
-          size={30}
-          className="absolute top-2 right-2"
-          onClick={()=>handleUnlinkShow(movie)}
+            size={30}
+            className="absolute top-2 right-2"
+            onClick={() => handleUnlinkShow(movie)}
           />
         </p>
 
@@ -93,7 +93,7 @@ const Profile = () => {
 
         <h2 className="font-Nsans-bold md:text-xl p-4 capitalize">fav shows</h2>
         <div className="relative flex items-center group">
-          {favList.length>4&&<MdChevronLeft onClick={() => slide(-500)} className="bg-white rounded-full absolute left-2 opacity-80 text-gray-700 z-20 hidden group-hover:block cursor-pointer" size={40} />}
+          {favList.length > 4 && <MdChevronLeft onClick={() => slide(-500)} className="bg-white rounded-full absolute left-2 opacity-80 text-gray-700 z-20 hidden group-hover:block cursor-pointer" size={40} />}
 
           <div
             id={`slider`}
@@ -101,7 +101,7 @@ const Profile = () => {
             {favList}
           </div>
 
-          {favList.length>4&&<MdChevronRight onClick={() => slide(500)} className="bg-white rounded-full absolute right-2 opacity-80 text-gray-700 z-20 hidden group-hover:block cursor-pointer" size={40} />}
+          {favList.length > 4 && <MdChevronRight onClick={() => slide(500)} className="bg-white rounded-full absolute right-2 opacity-80 text-gray-700 z-20 hidden group-hover:block cursor-pointer" size={40} />}
 
         </div>
       </div>

@@ -7,6 +7,8 @@ import Profile from "./pages/Profile"
 import NavBar from "./components/NavBar"
 import { AuthContextProvider } from "./context/AuthContext"
 import ProtectedRoute from './components/ProtectedRoute'
+import Footer from "./pages/Footer"
+import MovieDetail from "./pages/MovieDetial"
 function App() {
 
   return (
@@ -19,13 +21,15 @@ function App() {
           <Route path="/signup" element={<SignUp />} ></Route>
           <Route path="/profile"
             element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
             }
           ></Route>
+          <Route path="/movie/:id" element={<MovieDetail />} ></Route>
 
         </Routes>
+        <Footer />
       </AuthContextProvider>
     </>
   )
