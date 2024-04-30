@@ -6,20 +6,41 @@ const SignUp = () => {
   const [remberLogin, setRememberLogin] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  const [error, setError] = useState({})
+  const { signUp } = UserAuth();
 
-  const { user, signUp } = UserAuth();
- 
   const navigate = useNavigate()
+
+  const handleFirebaseErrors = (code) => {
+    switch (code) {
+      case "auth/email-already-in-use":
+        setError(prev => ({ ...prev, email: "The email address is already in use." }));
+        break;
+      case "auth/invalid-email":
+        setError(prev => ({ ...prev, email: "The email address is not valid." }));
+        break;
+      case "auth/weak-password":
+        setError(prev => ({ ...prev, password: "The password is too weak." }));
+        break;
+    }
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setError({})
     try {
       await signUp(email, password);
       navigate("/")
     } catch (error) {
-      console.log(error)
+      console.error('Signup error:', error.code);
+      if (error.code) {
+        handleFirebaseErrors(error.code);
+      }
     }
   }
+
+  console.log(error)
+
   return (
     <>
       <div className="w-full h-screen">
@@ -41,6 +62,7 @@ const SignUp = () => {
                   className="p-3 my-2 bg-gray-700 rounded"
                   type="email" name="" id="" placeholder="email" autoComplete="email"
                   onChange={(e) => setEmail(e.target.value)} />
+                {error?.email && <small className="text-red-600"> {error.email}</small>}
                 <input
                   className="p-3 my-2 bg-gray-700 rounded "
                   type="password"
@@ -48,6 +70,7 @@ const SignUp = () => {
                   autoComplete="current-password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {error?.password && <small className="text-red-600"> {error.password}</small>}
 
                 <button
                   className="bg-red-600 py-3 my-6 rounded font-Nsans-bold">
